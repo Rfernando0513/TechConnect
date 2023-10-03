@@ -1,0 +1,130 @@
+﻿@model List<UserModel>
+@{
+    ViewData["Title"] = "Listagem Usuarios";
+}
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Bootstrap JavaScript -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+<div class="text-center">
+
+    @if (TempData["MessageSucess"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+            @TempData["MessageSucess"]
+        </div>
+    }
+
+
+    @if (TempData["MessageErro"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+            @TempData["MessageErro"]
+        </div>
+    }
+
+    <h1 class="list-h1 display-4">Listagem  de Usuarios </h1>
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-start" style="margin-top:15px;">
+        <a role="button" class="add-buttom btn btn-primary" asp-controller="User" asp-action="Create">Adicionar</a>
+    </div>
+
+    <br />
+
+    <table id="table-listUsers" class="display" style="width:100%;">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Login</th>
+                <th scope="col">Email</th>
+                <th scope="col">Perfil</th>
+                <th scope="col">Total de Candidatos</th>
+                <th scope="col">Data de Cadastro</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                @foreach (UserModel user in Model)
+                {
+                    <tr>
+                        <th scope="row">@user.IdUser</th>
+                        <td>@user.Name</td>
+                        <td>@user.Login</td>
+                        <td>@user.Email</td>
+                        <td>@(user.Perfil == ControleContatos.Enum.PerfilEnum.Admin ? "Administrador" : "Padrão")</td>
+                        <td>
+                            <a href="javascript:" user-id="@user.IdUser" class="btn btn-success btn-sm btn-total-candidatos">
+                                @(user.Candidatos != null && user.Candidatos.Any() ? user.Candidatos.Count() : 0)
+                            </a>
+                        </td>
+                        <td>@user.DataCadastro</td>
+                        <td>
+                            <div class="btn-group" role="group">
+                                <div class="btn-group" role="group">
+                                    <a role="button" class="btn btn-primary" asp-route-id="@user.IdUser" asp-controller="User" asp-action="Edit">Editar</a>
+                                   @*  <a role="button" class="btn btn-danger" asp-route-id="@user.IdUser" asp-controller="User" asp-action="DeleteConfirmation">Delete</a> *@
+                                    <a href="#" role="button" class="btn btn-danger btn-delete-users" data-toggle="modalUser">Delete</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+
+    <div id="modalCandidatosUsers" class="modal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Listagem de Candidatos</h5>
+                    <button type="button" class="close" data-dismiss="modalUser" aria-label="Close">
+                        <span arial-hidden="true" &times;></span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-hover" id="table-listPessoa">
+                        <tbody>
+                            <div id="ListaCandidatosUsers"></div>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@foreach (UserModel user in Model)
+{
+    <div id="modalUserDelete" class="modal" tabindex="-1">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Confirmar Exclusão</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h4>Realmente deseja apagar o Usuario (@user.Name) ?</h4>
+                </div>
+                <div class="modal-footer">
+                    <!-- Botão para cancelar -->
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <!-- Botão para Excluir -->
+                    <a class="btn btn-danger btn-block" role="button"
+                        asp-controller="User" asp-route-id="@user.IdUser" asp-action="Delete">Excluir</a>
+                </div>
+            </div>
+        </div>
+    </div>
+}

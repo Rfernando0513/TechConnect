@@ -1,0 +1,51 @@
+﻿@using ControleContatos.Enum;
+@model UserModel
+@{
+    ViewData["Title"] = "Editar Usuários";
+}
+
+<div class="container container-cad-user">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="text-center">
+                <h1>Editar Usuário</h1>
+            </div>
+            <form asp-controller="User" asp-action="Edit" method="post">
+                <input type="hidden" asp-for="IdUser" />
+                <div class="form-group form-group-cad-user">
+                    <label for="Name">Nome</label>
+                    <input type="text" asp-for="Name" class="form-control" placeholder="Digite o Nome">
+                    @Html.ValidationMessageFor(x => x.Name)
+                </div>
+
+                <div class="form-group form-group-cad-user">
+                    <label for="Email">Email</label>
+                    <input type="text" asp-for="Email" class="form-control" placeholder="Digite o Email">
+                    @Html.ValidationMessageFor(x => x.Email)
+                </div>
+
+                <div class="form-group form-group-cad-user">
+                    <label for="Login">Login</label>
+                    <input type="text" asp-for="Login" class="form-control" placeholder="Digite o Login">
+                    @Html.ValidationMessageFor(x => x.Login)
+                </div>
+
+                <div class="form-group form-group-cad-user">
+                    <label for="Perfil">Perfil</label>
+                    <select asp-for="Perfil" class="form-control">
+                        <option value="">Selecione</option>
+                        <option value="@PerfilEnum.Admin">Administrador</option>
+                        <option value="@PerfilEnum.Padrão">Padrão</option>
+                    </select>
+                    @Html.ValidationMessageFor(x => x.Perfil)
+                </div>
+
+                <br />
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary btn-add-recruter">Editar</button>
+                    <a class="btn btn-voltar-recruter" asp-controller="User" asp-action="Index">Voltar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

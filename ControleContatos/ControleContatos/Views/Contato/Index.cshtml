@@ -1,0 +1,97 @@
+﻿@model List<ContatoModel>
+@{
+    ViewData["Title"] = "Listagem CLientes";
+}
+
+<div class="text-center">
+
+    @if (TempData["MessageSucess"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+            @TempData["MessageSucess"]
+        </div>
+    }   
+    
+    
+    @if (TempData["MessageErro"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+            @TempData["MessageErro"]
+        </div>
+    }
+
+    <h1 class="list-h1 display-4">Listagem de Candidatos </h1>
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-start" style="margin-top:15px;">
+        <a role="button" class="add-buttom btn btn-primary" asp-controller="Contato" asp-action="Create">Adicionar</a>
+    </div>
+
+    <br/>
+
+    <table class="table table-hover" id="table-listCandidatos">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">E-mail</th>
+                <th scope="col">Celular</th>
+                <th scope="col">Senioridade</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if(Model != null && Model.Any())
+            {
+                @foreach(ContatoModel candidato in Model)
+                {
+                    <tr>
+                        <th scope="row">@candidato.Id</th>
+                        <td>@candidato.Nome</td>
+                        <td>@candidato.Email</td>
+                        <td>@candidato.Celular</td>
+                        <td>@candidato.Senioridade</td>
+                        <td>
+                            <div class="btn-group" role="group">
+                                <div class="btn-group" role="group">
+                                    <a role="button" class="btn btn-primary" asp-route-id="@candidato.Id" asp-controller="Contato" asp-action="Edit">Editar</a>
+                                    <a href="#" role="button" class="btn btn-danger btn-delete-candidatos" data-toggle="modal">Delete</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr class="odd"><td valign="top" colspan="5">Nenhum Candidato Encontrado</td></tr>
+            }
+        </tbody>
+    </table>
+</div>
+@foreach (ContatoModel candidato in Model)
+{
+    <div id="modalCandidatoDelete" class="modal" tabindex="-1">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Confirmar Exclusão</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h4>Realmente deseja apagar o candidato (@candidato.Nome) ?</h4>
+                </div>
+                <div class="modal-footer">
+                    <!-- Botão para cancelar -->
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <!-- Botão para confirmar a exclusão -->
+                    <a class="btn btn-danger btn-block" role="button"
+                       asp-controller="Contato" asp-route-id="@candidato.Id" asp-action="Delete">Excluir</a>
+                </div>
+            </div>
+        </div>
+    </div>
+}

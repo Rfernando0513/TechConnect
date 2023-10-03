@@ -1,0 +1,35 @@
+﻿@model List<ContatoModel>
+@{
+    ViewData["Title"] = "Listagem Usuarios";
+}
+
+<table class="table table-hover" id="table-listModal">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome</th>
+            <th scope="col">E-mail</th>
+            <th scope="col">Celular</th>
+            <th scope="col">Senioridade</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            @foreach (var candidato in Model)
+            {
+                <tr>
+                    <th scope="row">@candidato.Id</th>
+                    <td>@candidato.Nome</td>
+                    <td>@candidato.Email</td>
+                    <td>@candidato.Celular</td>
+                    <td>@candidato.Senioridade</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr class="odd"><td valign="top" colspan="5">Nenhum Candidato Encontrado</td></tr>
+        }
+    </tbody>
+</table>

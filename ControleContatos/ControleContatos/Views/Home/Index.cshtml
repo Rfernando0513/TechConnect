@@ -1,0 +1,171 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<body>
+
+</body>
+<div class="banner-top">
+    <div class="banner-top-info">
+        <h2> Conecte-se com os melhores talentos .Net! </h2>
+        <h1> Encontre desenvolvedores qualificados para sua empresa. </h1>
+        <br />
+        <p> Bem-vindo à nossa plataforma de contatos exclusiva para desenvolvedores .Net e recrutadores. </p> 
+        <p>Aqui você encontrará os melhores profissionais de TI para preencher suas vagas de forma eficiente e ágil. </p>
+        <br />
+        <a asp-controller="Contato" asp-action="Index">
+            <button type="button" class="banner-buttom-recruter btn btn-primary btn-lg">RECRUTE AGORA </button>
+        </a>
+    </div>
+</div>
+
+<div class="cards-flow-container">
+    <div class="cards-flow-header">
+        <h2>
+            Para Desenvolvedores
+        </h2>
+        <p> Vantagens de se cadastrar no sistema </p>
+    </div>
+    <div class="cards-flow">
+        <div class="card-recruter">
+            <div class="card-number">
+                1
+            </div>
+            <div class="card-text">
+                <h1> Amplie suas oportunidades de carreira </h1>
+                <ul>
+                    <li>Desenvolva suas habilidades em projetos inovadores e desafiadores.</li>
+                    <li>Acesso a treinamentos e certificações para impulsionar seu crescimento profissional.</li>
+                    <li>Conecte-se com profissionais experientes e expanda sua rede de contatos na área de desenvolvimento .Net.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="card-recruter">
+            <div class="card-number">
+                2
+            </div>
+            <div class="card-text">
+                <h1> Seja visto pelas principais empresas do setor </h1>
+                <ul>
+                    <li>Destaque suas habilidades e experiências em um perfil profissional completo e atraente.</li>
+                    <li>Receba recomendações e avaliações de projetos anteriores para fortalecer sua reputação online.</li>
+                    <li>Participe de eventos e webinars exclusivos para desenvolvedores .Net.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="card-recruter">
+            <div class="card-number">
+                3
+            </div>
+            <div class="card-text">
+                <h1> Receba propostas de emprego personalizadas </h1>
+                <ul>
+                    <li>Receba notificações instantâneas sobre vagas que correspondem ao seu perfil e preferências.</li>
+                    <li>Receba sugestões de oportunidades de carreira com base em suas habilidades e interesses.</li>
+                    <li>Mantenha seu currículo atualizado e seja encontrado facilmente por recrutadores.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="card-recruter">
+            <div class="card-number">
+                4
+            </div>
+            <div class="card-text">
+                <h1> Cadastra-se </h1>
+                <p> Viu como é simples? Que tal começar agora mesmo? </p>
+                <a asp-controller="Contato" asp-action="Create">
+                    <button type="button" class="card-buttom-cadastro btn btn-primary btn-lg"> CADASTRA-SE </button>
+                </a>
+            </div>
+        </div>
+</div>
+
+<div class="cards-flow-container-recruter">
+    <div class="cards-flow-header-recruter">
+        <h2>
+            Para Recrutadores
+        </h2>
+        <p> Vantagens de pesquisar no sistema </p>
+    </div>
+    <div class="cards-flow-recruter">
+        <div class="card-recruter">
+            <div class="card-number-recruter">
+                1
+            </div>
+            <div class="card-text-recruter">
+                    <h1> Acesso a uma seleção qualificada de desenvolvedores .Net </h1>
+                <ul>
+                    <li>Encontre candidatos com experiência específica em .Net e tecnologias relacionadas.</li>
+                    <li>Avalie perfis detalhados e currículos atualizados para decisões informadas.</li>
+                    <li>Descubra desenvolvedores com habilidades técnicas e soft skills ideais.</li>
+                </ul>
+            </div>
+    </div>
+        <div class="card-recruter">
+            <div class="card-number-recruter">
+                2
+            </div>
+            <div class="card-text-recruter">
+                    <h1> Facilidade e rapidez na busca por candidatos ideais </h1>
+                <ul>
+                    <li>Refine sua pesquisa com filtros avançados para encontrar candidatos sob medida.</li>
+                    <li>Agilize o processo de recrutamento com ferramentas intuitivas de seleção e comunicação.</li>
+                    <li>Receba notificações instantâneas sobre candidatos qualificados.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="card-recruter">
+            <div class="card-number-recruter">
+                3
+            </div>
+            <div class="card-text-recruter">
+                    <h1> Otimização do processo de recrutamento </h1>
+                    <ul>
+                        <li>Reduza tempo e esforço com uma plataforma centralizada para buscar talentos.</li>
+                        <li>Melhore a qualidade das contratações ao selecionar os melhores desenvolvedores .Net.</li>
+                        <li>Acompanhe o status das candidaturas e mantenha histórico organizado.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="card-recruter">
+            <div class="card-number-recruter">
+                4
+            </div>
+            <div class="card-text-recruter">
+                <h1> Bora Recrutar </h1>
+                <p> Viu como é simples? Que tal começar agora mesmo? </p>
+                <a asp-controller="Contato" asp-action="Index">
+                        <button type="button" class="card-buttom-cadastro btn btn-primary btn-lg">RECRUTE-JÁ</button>
+                </a>
+            </div>
+        </div>
+</div>
+<br/>
+
+<section class="container-depoimentos">
+    <h3 class="depoimentos-title">DEPOIMENTOS</h3>
+    <div class="depoimentos-section">
+        <div class="testimonial">
+            <div class="testimonial-content">
+                <blockquote>
+                    "Encontrei a oportunidade dos meus sonhos através desta plataforma. Meu novo emprego é perfeito para o meu perfil e estou muito satisfeito!"
+                </blockquote>
+                        <cite>- Dziana Hasanbekava, Desenvolvedora Pleno</cite>
+            </div>
+                    <div class="depoimento-image">
+                        <img src="~/img2/depoimento-1.jpg" alt="Foto de Dziana Hasanbekava">
+            </div>
+        </div>
+        <br />
+        <div class="testimonial">
+            <div class="testimonial-content">
+                <blockquote>
+                    "A plataforma TechConnect nos ajudou a encontrar candidatos altamente qualificados em tempo recorde. Recomendo a todos os recrutadores!"
+                </blockquote>
+                        <cite>- Sales Navigator, Recrutador</cite>
+            </div>
+            <div class="depoimento-image">
+                        <img src="~/img2/depoimento-2.jpg" alt="Foto de ales Navigator">
+            </div>
+        </div>
+    </div>
+</section>

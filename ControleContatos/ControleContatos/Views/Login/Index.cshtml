@@ -1,0 +1,47 @@
+﻿@model LoginModel
+@{
+    Layout = "_LayoutDeslogado";
+    ViewData["Title"] = "Login";
+}
+
+@if (TempData["MessageErro"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+        @TempData["MessageErro"]
+    </div>
+}
+
+@if (TempData["MessageSucess"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+        @TempData["MessageSucess"]
+    </div>
+}
+
+<div class="container-login">
+    <div class="login-box">
+        <h1 class="login-title">TechConnect</h1>
+        <div class="login-body">
+            <form asp-controller="Login" asp-action="Acessar" method="post">
+                <div class="mb-3">
+                    <label for="Login" class="text-login form-label">Login</label>
+                    <input type="text" asp-for="Login" class="form-control" id="Login">
+                    @Html.ValidationMessageFor( x => x.Login)
+                </div>
+                <div class="mb-3">
+                    <label for="Senha" class="text-login form-label">Senha</label>
+                    <input type="password" asp-for="Password" class="form-control" id="Password">
+                    @Html.ValidationMessageFor( x => x.Password)
+                </div>
+
+                <p class="text-login  text-sm-center mx-auto">
+                    Esqueceu a senha?
+                    <a asp-controller="Login" asp-action="RedefinePassword" class="text-primary text-gradient font-weight-bould">Redefinir senha</a>
+                </p>
+                <button type="submit" class="btn btn-primary">Acessar</button>
+            </form>
+        </div>
+    </div>
+</div>

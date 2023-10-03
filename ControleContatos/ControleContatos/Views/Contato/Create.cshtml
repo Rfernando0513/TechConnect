@@ -1,0 +1,50 @@
+﻿@using ControleContatos.Enum;
+@model ContatoModel
+@{
+    ViewData["Title"] = "Cadastro Contatos";
+}
+
+<div class="container container-cad-user">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="cad-text-center text-center">
+                <h1 class="cad-h1">Cadastrar Candidato</h1>
+            </div>
+            <form asp-controller="Contato" asp-action="Create"  method="post">
+                <div class="form-group form-group-cad-user">
+                    <label for="nome">Nome</label>
+                    <input type="text" asp-for="Nome" class="form-control" placeholder="Digite o Nome">
+                    @Html.ValidationMessageFor(x  => x.Nome)
+                </div>
+
+                <div class="form-group form-group-cad-user">
+                    <label for="sobrenome">Email</label>
+                    <input type="text" asp-for="Email" class="form-control" placeholder="Digite o Email">
+                    @Html.ValidationMessageFor(x  => x.Email)
+                </div>
+
+                <div class="form-group form-group-cad-user">
+                    <label for="Celular">Celular</label>
+                    <input type="tel" asp-for="Celular" class="form-control" placeholder="Digite o Celular">
+                    @Html.ValidationMessageFor(x  => x.Celular)
+                </div>
+                <div class="form-group form-group-cad-user">
+                    <label for="Senioridade">Senioridade</label>
+                    <select asp-for="Senioridade" class="form-control">
+                        <option value="">Selecione</option>
+                        <option value="@SenioridadeEnum.Estagiario">Estagiario</option>
+                        <option value="@SenioridadeEnum.Junior">Junior</option>
+                        <option value="@SenioridadeEnum.Pleno">Pleno</option>
+                        <option value="@SenioridadeEnum.Senior">Senior</option>
+                    </select>
+                    @Html.ValidationMessageFor(x => x.Senioridade)
+                </div>
+                <br />
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary btn-add-recruter">Adicionar</button>
+                    <a class="btn btn-voltar-recruter" asp-controller="Contato" asp-action="Index">Voltar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
